@@ -1,0 +1,12 @@
+yamlmatlab Changelog
+================================
+
+Version 0.1.0 (date goes here)
+------------------------------
+
+* Initial Janklab-ification
+
+Version 0.0.0 (2013)
+-------------------------------
+
+* This is the old upstream project, imported from Google Code

@@ -146,7 +146,7 @@ end
 % Transforms Java Date class to MATLAB DateTime class
 %
 function result = scan_datetime(r)
-    result = DateTime(r);
+    result = yaml4mat.DateTime(r);
 end
 
 %--------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 %==========================================================================
 % Recursively walks through a Matlab hierarchy and converts it to the
-% hierarchy of java.util.ArrayListS and java.util.MapS. Then calls
+% hierarchy of java.util.ArrayLists and java.util.Maps. Then calls
 % Snakeyaml to write it to a file.
 %=========================================================================
 function result = WriteYaml(filename, data, flowstyle)
@@ -25,8 +25,7 @@ function result = WriteYaml(filename, data, flowstyle)
     javastruct = scan(data);
     dumperopts = DumperOptions();
     dumperopts.setLineBreak(...
-        javaMethod('getPlatformLineBreak',...
-        'org.yaml.snakeyaml.DumperOptions$LineBreak'));
+        javaMethod('getPlatformLineBreak', 'org.yaml.snakeyaml.DumperOptions$LineBreak'));
     if flowstyle
         classes = dumperopts.getClass.getClasses;
         flds = classes(3).getDeclaredFields();

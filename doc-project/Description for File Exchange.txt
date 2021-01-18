@@ -1,0 +1,10 @@
+Summary:
+
+YAML IO for Matlab
+
+
+Description:
+
+YAML I/O for Matlab. Pretty self-explanatory.
+
+yamlmatlab is part of the Janklab suite of libraries for Matlab. <https://github.com/janklab>

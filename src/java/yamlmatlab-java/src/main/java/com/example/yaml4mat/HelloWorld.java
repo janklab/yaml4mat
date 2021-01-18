@@ -1,4 +1,4 @@
-package com.example.mypackage;
+package com.example.yaml4mat;
 
 class HelloWorld {
   public static void main(String[] args) {

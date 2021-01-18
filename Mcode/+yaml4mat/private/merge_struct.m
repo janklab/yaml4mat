@@ -7,7 +7,7 @@
 function result = merge_struct(p, s, donotmerge, deep)
     if ~( isstruct(p) && isstruct(s) )
         error('Only structures can be merged.');
-    end;
+    end
     if ~exist('donotmerge','var')
         donotmerge = {};
     end
@@ -15,7 +15,7 @@ function result = merge_struct(p, s, donotmerge, deep)
         deep = 0;
     elseif strcmp(deep, 'deep')
         deep = 1;
-    end;
+    end
     
 
     
@@ -24,12 +24,12 @@ function result = merge_struct(p, s, donotmerge, deep)
         fld = char(i);
         if any(cellfun(@(x)isequal(x, fld), donotmerge))
             continue;
-        end;
+        end
  %       if isfield(result, fld)
  %           % Just give the user a hint that there may be some information
  %           % lost.
  %           fprintf(['Overwriting field ',fld,'\n']);
- %       end;
+ %       end
         %disp('Assigning:')
         %disp(['fieldname: ',fld]);
         %disp(s.(fld));
@@ -38,6 +38,6 @@ function result = merge_struct(p, s, donotmerge, deep)
             result.(fld) = merge_struct(result.(fld), s.(fld), donotmerge, deep);
         else
             result.(fld) = s.(fld);
-        end;
-    end;
+        end
+    end
 end

@@ -29,7 +29,7 @@ function result = recurse(data, level, addit, makeords)
         result = iter_struct(data, level, addit, makeords);
     else
         result = scan_data(data, level, addit);
-    end;
+    end
 end
 
 %--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ function result = iter_cell(data, level, addit, makeords)
         tmp = cell2mat(tmp);
         if ~makeords
             tmp = num2cell(tmp);
-        end;
+        end
         result = tmp;
     elseif isempty(data)
         result = [];
@@ -65,8 +65,8 @@ function result = iter_cell(data, level, addit, makeords)
         result = {};
         for i = 1:length(data)
             result{i} = recurse(data{i}, level + 1, addit, makeords);
-        end;
-    end;
+        end
+    end
 end
 
 %--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ function result = iter_struct(data, level, addit, makeords)
     for i = fields(data)'
         fld = char(i);
         result.(fld) = recurse(data.(fld), level + 1, addit, makeords);
-    end;
+    end
 end
 
 %--------------------------------------------------------------------------

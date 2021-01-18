@@ -1,6 +1,6 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
   <configuration file="./yamlmatlab.prj" location="." name="yamlmatlab" target="target.toolbox" target-name="Package Toolbox">
-    <param.appname>yamlmatlab</param.appname>
+    <param.appname>yaml4mat</param.appname>
     <param.authnamewatermark>Your Name Here</param.authnamewatermark>
     <param.email>floss@apjanke.net</param.email>
     <param.company></param.company>

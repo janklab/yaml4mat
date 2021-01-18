@@ -11,7 +11,7 @@
 
 # TODO: Should make dist have a dependency on make doc?
 
-PROGRAM=yamlmatlab
+PROGRAM=yaml4mat
 VERSION=$(shell cat VERSION)
 DIST=dist/${PROGRAM}-${VERSION}
 DISTFILES=build/Mcode doc lib examples README.md LICENSE CHANGES.txt

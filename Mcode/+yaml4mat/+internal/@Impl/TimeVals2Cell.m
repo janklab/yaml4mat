@@ -4,7 +4,11 @@ function s = TimeVals2Cell(time,datavalues,header)
 %
 % Synopsis:
 %  s = yaml4mat.TimeVals2Cell(time,datavalues,header)
+if ~iscell(header)
+    header = {header};
+end
 
-s = yaml4mat.internal.Impl.TimeVals2Cell(time,datavalues,header);
-
+for i=1:numel(header)
+    s.(header{i}) = [num2cell(DateTime(time)) num2cell(datavalues(:,i))];
+end
 end

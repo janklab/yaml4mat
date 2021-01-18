@@ -1,4 +1,4 @@
-classdef DateTime
+classdef DateTime < yaml4mat.internal.Yaml4matBase
     % This class enclapsulates date time value but behaves in a very
     % similar way as typical array of timestamps in datenum format
     %======================================================================

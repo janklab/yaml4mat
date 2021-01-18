@@ -1,29 +1,27 @@
-%==========================================================================
+function result = ReadYamlRaw(filename, verbose, nosuchfileaction, treatasdata)
 % Reads YAML file, converts YAML sequences to MATLAB cell columns and YAML
 % mappings to MATLAB structs
 %
 %  filename ... name of yaml file to be imported
 %  verbose  ... verbosity level (0 or absent = no messages,
 %                                          1 = notify imports)
-%==========================================================================
-function result = ReadYamlRaw(filename, verbose, nosuchfileaction, treatasdata)
 if ~exist('verbose','var')
     verbose = 0;
-end;
+end
 
 if ~exist('nosuchfileaction','var')
     nosuchfileaction = 0;
-end;
+end
 if ~ismember(nosuchfileaction,[0,1])
     error('nosuchfileexception parameter must be 0,1 or missing.');
-end;
+end
 
 if(~exist('treatasdata','var'))
     treatasdata = 0;
-end;
+end
 if ~ismember(treatasdata,[0,1])
     error('treatasdata parameter must be 0,1 or missing.');
-end;
+end
 
 [pth,~,~] = fileparts(mfilename('fullpath'));
 try
@@ -35,7 +33,7 @@ catch
         javaaddpath(dp); % javaaddpath clears global variables...!?
     end
     import('org.yaml.snakeyaml.*');
-end;
+end
 
 setverblevel(verbose);
 % import('org.yaml.snakeyaml.Yaml'); % import here does not affect import in load_yaml ...!?
@@ -56,33 +54,33 @@ persistent nsfe;
 
 if exist('nosuchfileaction','var') %isempty(nsfe) &&
     nsfe = nosuchfileaction;
-end;
+end
 
 persistent tadf;
 
 if isempty(tadf) && exist('treatasdata','var')
     tadf = treatasdata;
-end;
+end
 
-yaml = org.yaml.snakeyaml.Yaml(); % It appears that Java objects cannot be persistent...!?
+yaml = org.yaml.snakeyaml.Yaml();
 if ~tadf
     [filepath, filename, fileext] = fileparts(inputfilename);
     if isempty(filepath)
         pathstore = cd();
     else
         pathstore = cd(filepath);
-    end;
-end;
+    end
+end
 try
     if ~tadf
         result = scan(yaml.load(fileread([filename, fileext])));
     else
         result = scan(yaml.load(inputfilename));
-    end;
+    end
 catch ex
     if ~tadf
         cd(pathstore);
-    end;
+    end
     switch ex.identifier
         case 'MATLAB:fileread:cannotOpenFile'
             if nsfe == 1
@@ -91,13 +89,13 @@ catch ex
                 warning('MATLAB:MATYAML:FileNotFound', ['No such file to read: ',filename,fileext]);
                 result = struct();
                 return;
-            end;
-    end;
+            end
+    end
     rethrow(ex);
-end;
+end
 if ~tadf
     cd(pathstore);
-end;
+end
 end
 
 %--------------------------------------------------------------------------
@@ -118,7 +116,7 @@ elseif isa(r, 'java.util.Map')
     result = scan_map(r);
 else
     error(['Unknown data type: ' class(r)]);
-end;
+end
 end
 
 %--------------------------------------------------------------------------
@@ -161,7 +159,7 @@ while it.hasNext()
     i = it.next();
     result{ii} = scan(i);
     ii = ii + 1;
-end;
+end
 end
 
 %--------------------------------------------------------------------------
@@ -182,8 +180,8 @@ while it.hasNext()
         result.(ich) = perform_import(r.get(java.lang.String(ich)));
     else
         result.(genvarname(ich)) = scan(r.get(java.lang.String(ich)));
-    end;
-end;
+    end
+end
 if not(exist('result','var'))
     result={};
 end
@@ -211,7 +209,7 @@ else
     disp(r);
     error(['Importer does not unterstand given filename. '...
         'Invalid node displayed above.']);
-end;
+end
 end
 
 %--------------------------------------------------------------------------
@@ -222,7 +220,7 @@ global verbose_readyaml;
 verbose_readyaml = 0;
 if exist('level','var')
     verbose_readyaml = level;
-end;
+end
 end
 
 %--------------------------------------------------------------------------
@@ -244,8 +242,7 @@ if getverblevel() >= level
         disp(value_to_display);
     else
         fprintf('\n');
-    end;
-end;
+    end
 end
-%==========================================================================
+end
 

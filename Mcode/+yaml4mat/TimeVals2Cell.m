@@ -1,8 +1,9 @@
 function s = TimeVals2Cell(time,datavalues,header)
-% creates a typical struct with field named by header. Values are cell of
+% Creates a typical struct with field named by header. Values are cell of
 % date and vals.
-% synopsis:
-%  s = TimeVals2Cell(time,datavalues,header)
+%
+% Synopsis:
+%  s = yaml4mat.TimeVals2Cell(time,datavalues,header)
 if ~iscell(header)
     header = {header};
 end

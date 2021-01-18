@@ -1,4 +1,4 @@
-function result = ReadYaml(filename, nosuchfileaction, makeords, treatasdata, dictionary)
+function result = readyaml(filename, nosuchfileaction, makeords, treatasdata, dictionary)
 % Actually reads YAML file and transforms it using several mechanisms:
 %
 %   - Transforms mappings and lists into Matlab structs and cell arrays,

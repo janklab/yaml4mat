@@ -1,4 +1,4 @@
-function [vals, timeaxis] = GetYamlVals(yamldata)
+function [vals, timeaxis] = getyamlvals(yamldata)
 % Converts data formatted in yaml style (cells containing timestamps and values)
 % into matlab user friendly matrices.
 

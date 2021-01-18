@@ -1,4 +1,4 @@
-function s = TimeVals2Cell(time,datavalues,header)
+function s = timevals2cell(time,datavalues,header)
 % Creates a typical struct with field named by header. Values are cell of
 % date and vals.
 %

@@ -1,4 +1,4 @@
-function result = ReadYaml(filename, nosuchfileaction, makeords, treatasdata, dictionary)
+function result = readyaml(filename, nosuchfileaction, makeords, treatasdata, dictionary)
 % Actually reads YAML file and transforms it using several mechanisms:
 %
 %   - Transforms mappings and lists into Matlab structs and cell arrays,
@@ -25,6 +25,6 @@ function result = ReadYaml(filename, nosuchfileaction, makeords, treatasdata, di
 %   dictionary       ... Dictionary of of labels that will be replaced,
 %                        struct is expected
 
-result = yaml4mat.internal.Impl.ReadYaml(filename, nosuchfileaction, makeords, treatasdata, dictionary);
+result = yaml4mat.internal.Impl.readyaml(filename, nosuchfileaction, makeords, treatasdata, dictionary);
 
 end

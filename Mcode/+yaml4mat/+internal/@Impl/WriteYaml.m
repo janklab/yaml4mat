@@ -1,4 +1,4 @@
-function result = WriteYaml(filename, data, flowstyle)
+function result = writeyaml(filename, data, flowstyle)
 % Recursively walks through a Matlab hierarchy and converts it to the
 % hierarchy of java.util.ArrayLists and java.util.Maps. Then calls
 % Snakeyaml to write it to a file.

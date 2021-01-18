@@ -66,11 +66,11 @@ function stat = test_RY_Matrices()
         if ~isequal(ry, tv.testval)
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_FloatingPoints()
@@ -82,11 +82,11 @@ function stat = test_RY_FloatingPoints()
         if ~isequalwithequalnans(ry, tv.testval)
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_Indentation()
@@ -98,11 +98,11 @@ function stat = test_RY_Indentation()
         if ~isequal(ry, tv.testval)
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_SequenceMapping()
@@ -114,11 +114,11 @@ function stat = test_RY_SequenceMapping()
         if ~isequal(ry, tv.testval)
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_Simple()
@@ -129,12 +129,12 @@ function stat = test_RY_Simple()
         tv = load([PTH_PRIMITIVES() 'simple.mat']);
         if ~isequal(ry, tv.testval)
             stat.desc  = 'Wrong values loaded';
-            stat.ok = 0;         
-        end;
+            stat.ok = 0;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_Time()
@@ -146,11 +146,11 @@ function stat = test_RY_Time()
         if ~isequal(ry, tv.testval)
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_TimeVariants()
@@ -162,11 +162,11 @@ function stat = test_RY_TimeVariants()
         if ~isequal(ry, tv.testval)
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_Import()
@@ -178,11 +178,11 @@ function stat = test_RY_Import()
         if ~isequal(ry, tv.testval)
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_ImportDef()
@@ -194,11 +194,11 @@ function stat = test_RY_ImportDef()
         if ~isequal(ry, tv.testval)
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_ImportNonex()
@@ -213,13 +213,12 @@ function stat = test_RY_ImportNonex()
                 stat.ok = 1;
             else
                 rethrow(ex);
-            end;
-        end;      
-        
+            end
+        end 
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_Inheritance()
@@ -231,11 +230,11 @@ function stat = test_RY_Inheritance()
         if ~isequal(ry, tv.testval)
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_InheritanceMultiple()
@@ -247,11 +246,11 @@ function stat = test_RY_InheritanceMultiple()
         if ~isequal(ry, tv.testval)
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_InheritanceLoop()
@@ -266,13 +265,13 @@ function stat = test_RY_InheritanceLoop()
                 stat.ok = 1;
             else
                 rethrow(ex);
-            end;
-        end;      
+            end
+        end
         
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_Whitespaces()
@@ -283,11 +282,11 @@ function stat = test_RY_Whitespaces()
         if ~isfield(ry,'ImageFile') || ~isfield(ry,'ContoursCount')         
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 function stat = test_RY_usecase_01()
@@ -296,14 +295,14 @@ function stat = test_RY_usecase_01()
     try
         ry = ReadYaml([PTH_PRIMITIVES() 'usecase_struct_01.yaml']);
         tv = load([PTH_PRIMITIVES() 'usecase_struct_01.mat']);
-        if ~isequalwithequalnans(ry, tv.testval)
+        if ~isequaln(ry, tv.testval)
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;
+    end
 end
 
 
@@ -321,9 +320,9 @@ try
         stat.ok = 0;
     end
     
-catch   
-       stat.desc  = 'Program crash';
-       stat.ok = 0;
+catch
+    stat.desc  = 'Program crash';
+    stat.ok = 0;
 end
 
 

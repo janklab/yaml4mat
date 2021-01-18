@@ -46,12 +46,12 @@ function stat = test_WY_Universal(path, filename)
         data = load([path, filesep, filename, '.mat']);
         WriteYaml('~temporary.yaml',data.testval);
         ry = ReadYaml('~temporary.yaml');
-        if ~isequalwithequalnans(ry, data.testval)
+        if ~isequaln(ry, data.testval)
             stat.desc  = 'Wrong values loaded';
             stat.ok = 0;         
-        end;
+        end
     catch
         stat.ok = 0;
         stat.desc = 'Crash';
-    end;    
+    end
 end

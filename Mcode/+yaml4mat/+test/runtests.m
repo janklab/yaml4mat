@@ -48,5 +48,6 @@ function out = runtests
   
   out = runner.run(suite);
   
-  end
+end
+
   

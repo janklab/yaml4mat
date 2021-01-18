@@ -1,18 +1,18 @@
 classdef DateTime
     % This class enclapsulates date time value but behaves in a very
     % similar way as typical array of timestamps in datenum format
-  %======================================================================
+    %======================================================================
     %{
 		Copyright (c) 2011
 		This program is a result of a joined cooperation of Energocentrum
 		PLUS, s.r.o. and Czech Technical University (CTU) in Prague.
-        The program is maintained by Energocentrum PLUS, s.r.o. and 
-        licensed under the terms of MIT license. Full text of the license 
-        is included in the program release.  		
+        The program is maintained by Energocentrum PLUS, s.r.o. and
+        licensed under the terms of MIT license. Full text of the license
+        is included in the program release.
 		
-        Author(s): 
-		Jiri Cigler, Dept. of Control Engineering, CTU Prague & Automatic Control Laboratory, ETH Zurich		
-		Jan  Siroky, Energocentrum PLUS s.r.o.		
+        Author(s):
+		Jiri Cigler, Dept. of Control Engineering, CTU Prague & Automatic Control Laboratory, ETH Zurich
+		Jan  Siroky, Energocentrum PLUS s.r.o.
 		
         Implementation and Revisions:
 
@@ -23,13 +23,13 @@ classdef DateTime
         jc    07-Jan-12   Added functions addtodate,datevec,weekday
     %}
     %======================================================================
-
-    
-    % TODO 
     
     
-% Date and Time Operations
-% addtodateModify date number by fieldcalendarCalendar for specified monthclockCurrent time as date vectorcputimeElapsed CPU timedateCurrent date stringdatenumConvert date and time to serial date numberdatestrConvert date and time to string formatdatevecConvert date and time to vector of componentseomdayLast day of monthetimeTime elapsed between date vectorsnowCurrent date and timeweekdayDay of wee
+    % TODO
+    
+    
+    % Date and Time Operations
+    % addtodateModify date number by fieldcalendarCalendar for specified monthclockCurrent time as date vectorcputimeElapsed CPU timedateCurrent date stringdatenumConvert date and time to serial date numberdatestrConvert date and time to string formatdatevecConvert date and time to vector of componentseomdayLast day of monthetimeTime elapsed between date vectorsnowCurrent date and timeweekdayDay of wee
     
     
     properties
@@ -38,18 +38,18 @@ classdef DateTime
     methods
         function this = DateTime(varargin)
             if numel(varargin)==1 && isa(varargin{1},'java.util.Date')
-                    %df = java.text.SimpleDateFormat( 'yyyy-MM-dd HH:mm:ss' );
-                    %tz = java.util.TimeZone.getTimeZone ('UTC');
-                    %df.setTimeZone( tz );
-                    %this.serialDate=datenum(char(df.format(varargin{1})));
-                    sec = varargin{1}.getTime/1000;                   
-                    
-                    this.serialDate=datenum(1970,1,1,0,0,sec);
-                    %this.serialDate = datenum(char(varargin{1}.toString)) - varargin{1}.getTimezoneOffset/60/24;
-                    %disp ( [ char(varargin{1}.toGMTString), '---' char(varargin{1}.toString ), '---', char(varargin{1}.toLocaleString )]);
-                    %if (varargin{1}.getTimezoneOffset)~=-120
-                    %    disp(1);
-                    %end
+                %df = java.text.SimpleDateFormat( 'yyyy-MM-dd HH:mm:ss' );
+                %tz = java.util.TimeZone.getTimeZone ('UTC');
+                %df.setTimeZone( tz );
+                %this.serialDate=datenum(char(df.format(varargin{1})));
+                sec = varargin{1}.getTime/1000;
+                
+                this.serialDate=datenum(1970,1,1,0,0,sec);
+                %this.serialDate = datenum(char(varargin{1}.toString)) - varargin{1}.getTimezoneOffset/60/24;
+                %disp ( [ char(varargin{1}.toGMTString), '---' char(varargin{1}.toString ), '---', char(varargin{1}.toLocaleString )]);
+                %if (varargin{1}.getTimezoneOffset)~=-120
+                %    disp(1);
+                %end
             else
                 this.serialDate=datenum(varargin{:});
             end
@@ -186,7 +186,7 @@ classdef DateTime
             if isa(S.subs{1},'DateTime')
                 S.subs{1}=double(S.subs{1});
             end
-                
+            
             this.serialDate =  subsref(this.serialDate,S);
         end
         
@@ -194,7 +194,7 @@ classdef DateTime
             idx = double(this)-1;
         end
         
-        function endidx = end(this,k,n)  
+        function endidx = end(this,k,n)
             if size(this.serialDate,1)==1 || size(this.serialDate,2)==1
                 endidx=numel(this.serialDate);
             else
@@ -261,7 +261,7 @@ classdef DateTime
                 
             elseif nout ==6
                 [varargout{1} varargout{2} varargout{3} varargout{4} varargout{5} varargout{6} ] = datevec(this.serialDate,varargin{:});
-            else 
+            else
                 error('Unknown function call');
             end
         end
